@@ -25,14 +25,14 @@ def validate_type(value, data_type):
 
 def collect_user_input(account_type):
     '''
-        * Prompt the user to set the savings balance, interest rate, and months for an account.
+        # Prompt the user to set the savings balance, interest rate, and months for an account.
             - Test whether the user input is of the correct type
                 - balance and interest_rate: float
                 - months: int
             - We'll use account_type for the prompt message. The 2 valid options
               are 'savings' and 'cd'
-        * Return the validated user input as a dictionary
-            - savings_account.create_savings_account and cd_account.create_cd_account
+        # Return the validated user input as a dictionary
+            - create_savings_account and create_cd_account
               both require balance, interest_rate, and months as arguments, so
               return a dictionary of validated user input using the keys
               'balance', 'interest_rate', and 'months'
