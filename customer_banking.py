@@ -6,6 +6,7 @@ def validate_type(value, data_type):
     ''' This function validates the desired data types for user-entered values
             - value: The user-entered value of untested type
             - data_type: The desired data type (e.g. float)
+        # Returns the user input in the desired data type
     '''
     try:
         # we need to check for float in int, so let's perform our check dynamically
@@ -18,10 +19,10 @@ def validate_type(value, data_type):
             print("Example: 5.01")
         elif data_type == 'int':
             print("Example: 5")
-        return False
+        return None
     else:
         # there was some other problem, so let's just assume a failure
-        return False
+        return None
 
 def collect_user_input(account_type):
     '''
@@ -40,21 +41,22 @@ def collect_user_input(account_type):
     # Prompt the user to set the balance, interest rate, and months for the account.
     # Let's test all of these user inputs one at a time so that the user can
     # correct any mistakes as they go along
-    balance_validated = False
-    while not balance_validated:
+    balance_validated = None
+    while balance_validated is None:
         balance = input(f"Enter the {account_type} account starting balance:  ")
         balance_validated = validate_type(balance, 'float')
 
-    interest_validated = False
-    while not interest_validated:
+    interest_validated = None
+    while interest_validated is None:
         interest = input(f"Enter the interest rate as a decimal for the"
                          f" {account_type} account:  ")
         interest_validated = validate_type(interest, 'float')
 
-    months_validated = False
-    while not months_validated:
+    months_validated = None
+    while months_validated is None:
         months = input(f"Enter the number of months for the {account_type} account:  ")
         months_validated = validate_type(months, 'int')
+
     # Now we have all inputs validated, so let's return our clean results in a 
     # dictionary.
     return {'balance': balance_validated,
